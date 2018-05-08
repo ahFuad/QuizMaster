@@ -29,6 +29,21 @@ public class LoginController {
     }
 
     public void performLogIn(){
+        Connection connection = null;
+
+        DBConnection dbConnection = new DBConnection();
+        connection = dbConnection.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from qmusers");
+            System.out.println("...............");
+            while (resultSet.next()){
+                System.out.println(resultSet.getString(1)+" "+resultSet.getString(2)+" ");
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
