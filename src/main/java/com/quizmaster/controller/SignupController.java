@@ -26,5 +26,8 @@ public class SignupController {
         this.signup = signup;
     }
 
+    public void performSignup(){
+
+    }
 
 }
