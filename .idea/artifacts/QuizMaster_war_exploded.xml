@@ -5,6 +5,8 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="QuizMaster" />
+          <element id="library" level="application" name="materialize" />
+          <element id="library" level="application" name="jquery-2.1.1" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.sun.faces:jsf-api:2.2.17" />

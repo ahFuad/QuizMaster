@@ -3,5 +3,32 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <navigation-rule>
+        <from-view-id>../view/signup.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{signupcontroller.performSignup}</from-action>
+            <from-outcome>signup</from-outcome>
+            <to-view-id>../view/signup.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{signupcontroller.performSignup}</from-action>
+            <from-outcome>login</from-outcome>
+            <to-view-id>../view/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>../view/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{logincontroller.performLogIn}</from-action>
+            <from-outcome>login</from-outcome>
+            <to-view-id>../view/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{logincontroller.performLogIn}</from-action>
+            <from-outcome>homeuser</from-outcome>
+            <to-view-id>../view/homeuser.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
   
 </faces-config>

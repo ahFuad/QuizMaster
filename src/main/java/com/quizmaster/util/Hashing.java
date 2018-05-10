@@ -1,4 +1,4 @@
-package com.quizmaster.encryption;
+package com.quizmaster.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

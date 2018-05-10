@@ -1,4 +1,4 @@
-package com.quizmaster.database;
+package com.quizmaster.util;
 
 
 import java.io.FileInputStream;
