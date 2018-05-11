@@ -4,6 +4,7 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
+    <!-- Sign Up page -->
     <navigation-rule>
         <from-view-id>../view/signup.xhtml</from-view-id>
         <navigation-case>
@@ -17,6 +18,8 @@
             <to-view-id>../view/login.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+
+    <!-- Log In Page -->
     <navigation-rule>
         <from-view-id>../view/login.xhtml</from-view-id>
         <navigation-case>

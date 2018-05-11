@@ -1,18 +1,11 @@
 package com.quizmaster.util;
 
 import java.io.IOException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "authfilter", urlPatterns = {"*.xhtml"})
 public class AuthFilter implements Filter {
 
     public AuthFilter() {
@@ -23,6 +16,7 @@ public class AuthFilter implements Filter {
 
     }
 
+    //method that performs filtering.....by default
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         try {
@@ -30,15 +24,32 @@ public class AuthFilter implements Filter {
             // check whether session variable is set
             HttpServletRequest req = (HttpServletRequest) request;
             HttpServletResponse res = (HttpServletResponse) response;
-            HttpSession ses = req.getSession(false);
-            //  allow user to proccede if url is login.xhtml or user logged in or user is accessing any page in //public folder
-            String reqURI = req.getRequestURI();
-            System.out.println(reqURI); //for checking
-            if (reqURI.contains("/view/login.xhtml") || reqURI.contains("/view/signup.xhtml") || (ses != null && ses.getAttribute("userid") != null)
-                    ||/*reqURI.contains("/view/") ||*/ reqURI.contains("javax.faces.resource") )
-                chain.doFilter(request, response);
-            else   // user didn't log in but asking for a page that is not allowed so take user to login page
-                res.sendRedirect(req.getContextPath() + "/view/login.xhtml");  // Anonymous user. Redirect to login page
+            HttpSession session = req.getSession(false);
+            String uri = req.getRequestURI();
+            System.out.println("Requested: "+uri);
+
+            boolean loggedIn = (session!=null) && (session.getAttribute("userid")!=null);   // true if user is logged in
+            boolean resourceRequest = uri.contains("javax.faces.resource"); //true if resources requested
+            boolean initialRequest = !uri.endsWith("xhtml");    //true if uri doesn't end with .xhtml
+
+            if(loggedIn || resourceRequest || initialRequest){
+                //executes if user is logged in,resource requested or uri request with no .xhtml(ex:server run initial request:"/")
+                if(!resourceRequest || !initialRequest){
+                    //only if user is logged in
+                    if(uri.contains("login") || uri.contains("signup")){    //redirect to homeuser for these 2 pages
+                        res.sendRedirect(req.getContextPath()+"/view/homeuser.xhtml");
+                    }
+                }
+                chain.doFilter(request,response);
+            } else{
+                //no user is logged in
+                if(uri.contains("login") || uri.contains("signup") || uri.contains("index")){   //passes for this 3 pages
+                    chain.doFilter(request,response);
+                }else{
+                    res.sendRedirect(req.getContextPath()+"/view/login.xhtml"); //redirect to login for other pages
+                }
+            }
+
         }
         catch(Throwable t) {
             System.out.println( t.getMessage());

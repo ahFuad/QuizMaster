@@ -11,11 +11,12 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import java.io.Serializable;
 import java.sql.*;
 
 @ManagedBean(name = "logincontroller")
 @SessionScoped
-public class LoginController {
+public class LoginController implements Serializable {
 
     Login login = new Login();
 
@@ -34,7 +35,7 @@ public class LoginController {
         if(loginCheck()){
             System.out.println("Log In success");
             //get HTTP session and store userId
-            HttpSession session = SessionManager.getSession();
+            HttpSession session = SessionManager.getSession();  //getSession() is a static method
             session.setAttribute("userid",login.getUserId());
             return "homeuser";
         } else{

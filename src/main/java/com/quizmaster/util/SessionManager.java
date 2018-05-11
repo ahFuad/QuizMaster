@@ -15,7 +15,7 @@ public class SessionManager {
         return (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
     }
 
-    public static String getUserName()
+    public static String getUserId()
     {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         return  session.getAttribute("userid").toString();

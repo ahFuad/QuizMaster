@@ -5,6 +5,18 @@
          version="4.0">
 
     <display-name>QuizMaster</display-name>
+
+    <!-- Web Filter -->
+    <filter>
+        <filter-name>authfilter</filter-name>
+        <filter-class>com.quizmaster.util.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>authfilter</filter-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </filter-mapping>
+
+    <!-- Context Parameter -->
     <context-param>
         <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
         <param-value>.xhtml</param-value>
@@ -13,6 +25,8 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+
+    <!-- Servlet Mapping -->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -26,7 +40,9 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
+
+    <!-- Welcome file -->
     <welcome-file-list>
-        <welcome-file>view/signup.xhtml</welcome-file>
+        <welcome-file>view/index.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>

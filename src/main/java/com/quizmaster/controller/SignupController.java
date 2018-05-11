@@ -64,7 +64,7 @@ public class SignupController {
                     }
                 }
             } else{
-                System.out.println("user already exists");
+                System.out.println("user already exists");  //for checking
                 FacesContext context=FacesContext.getCurrentInstance();
                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"User ID/Email already exists","");
                 context.addMessage("form-signup:user_id:user_email",message);
