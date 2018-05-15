@@ -64,6 +64,15 @@
             <version>${tomcat-version}</version>
             <scope>provided</scope>
         </dependency-->
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+        <!-- https://mvnrepository.com/artifact/jstl/jstl -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+
     </dependencies>
 
     <!-- maven core build plugins latest version and compiler plugin configurations, source and target jdk for compiler plugin-->
