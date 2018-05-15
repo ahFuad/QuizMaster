@@ -15,6 +15,10 @@
         <filter-name>authfilter</filter-name>
         <url-pattern>*.xhtml</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>authfilter</filter-name>
+        <url-pattern>*.jsf</url-pattern>
+    </filter-mapping>
 
     <!-- Context Parameter -->
     <context-param>

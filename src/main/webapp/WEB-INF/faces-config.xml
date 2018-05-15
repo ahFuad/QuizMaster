@@ -29,8 +29,43 @@
         </navigation-case>
         <navigation-case>
             <from-action>#{logincontroller.performLogIn}</from-action>
-            <from-outcome>homeuser</from-outcome>
-            <to-view-id>../view/homeuser.xhtml</to-view-id>
+            <from-outcome>userhome</from-outcome>
+            <to-view-id>../view/userhome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!-- UserHome Page -->
+    <navigation-rule>
+        <from-view-id>../view/userhome.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{logincontroller.performLogout}</from-action>
+            <from-outcome>login</from-outcome>
+            <to-view-id>../view/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!-- Topic Selection Page -->
+    <navigation-rule>
+        <from-view-id>../view/topic.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{questioncontroller.setQuestions}</from-action>
+            <from-outcome>quiz</from-outcome>
+            <to-view-id>../view/quiz.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{questioncontroller.setQuestions}</from-action>
+            <from-outcome>topic</from-outcome>
+            <to-view-id>../view/topic.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!-- Quiz Page -->
+    <navigation-rule>
+        <from-view-id>../view/quiz.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{questioncontroller.evaluate}</from-action>
+            <from-outcome>result</from-outcome>
+            <to-view-id>../view/result.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
   
